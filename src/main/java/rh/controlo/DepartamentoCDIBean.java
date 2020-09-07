@@ -54,5 +54,4 @@ public class DepartamentoCDIBean {
     public void setDepartamentos(List<Departamento> departamentos) {
         this.departamentos = departamentos;
     }
-
 }
