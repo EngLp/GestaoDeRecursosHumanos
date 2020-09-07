@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Funcionario em Lista</title>
+    </h:head>
+    <h:body>
+        <!--
+        <h:messages showDetail="true" showSummary="true" style="color: #00FF00;"/>
+        -->
+        
+        <h:form>
+        <!--    
+            <h:panelGrid columns="3">   
+                <f:facet name="header">
+                    Registo de Novo Funcionario
+                </f:facet>
+        -->
+        <h:panelGrid columns="3">  
+                <h:outputLabel value="Nome"/>
+                <h:inputText id="nome" value="#{funcionarioMbean.funcionario.nome}" required="true" requiredMessage="o campo nome é obrigatorio" size="60"/>
+                <h:message for="nome" style="color: #FF0000;" />
+                
+                <h:outputLabel value="SobreNome"/>
+                <h:inputText id="sobrenome" value="#{funcionarioMbean.funcionario.sobrenome}" required="true" requiredMessage="o campo sobrenome é obrigatorio" size="60"/>
+                <h:message for="sobrenome" style="color: #FF0000;" />
+        </h:panelGrid>        
+                <h:outputLabel value="Departamento"/>
+                <h:selectOneMenu value="#{funcionarioMbean.funcionario.departamento}">
+                    <f:selectItem itemValue="contabilidade" itemLabel="Contabilidade"/>
+                    <f:selectItem itemValue="formacao" itemLabel="Formação"/>
+                    <f:selectItem itemValue="higiene" itemLabel="Higiene"/>
+                    <f:selectItem itemValue="vendas" itemLabel="Vendas"/>                    
+                </h:selectOneMenu>
+        <h:panelGrid columns="3">         
+
+                <h:outputLabel value="Data de Nascimento"/>
+                <h:inputText id="data_nascimento" value="#{funcionarioMbean.funcionario.dataNascimento}" rendered="true">
+                    <f:convertDateTime dateStyle="medium" pattern="dd/MM/yyyy"/>
+                </h:inputText>
+                <h:message for="data_nascimento" />
+                
+                <h:outputLabel value="salario"/>
+                <h:inputText id="salario" value="#{funcionarioMbean.funcionario.salario}" size="30">
+                    <f:convertNumber minFractionDigits="2"/>
+                </h:inputText>
+                <h:message for="salario" />
+        </h:panelGrid>
+                <!--            CODIGO EXATAMENTE IGUAL MAIS DA ERRO DE SINTAXE AO EXECUTAR
+                    <h:outputLabel value="Data de Nascimento"/>
+                    <h:inputText value="#{funcionarioMbean.funcionario.dataNascimento}"rendered="true">
+                        <f:convertDateTime dateStyle="medium" pattern="dd/mm/yyyy"/>
+                    </h:inputText>
+                -->
+
+                <h:outputLabel value="Endereco"/>
+                <h:panelGroup>
+                    <h:panelGrid columns="4">
+                        <h:outputLabel value="Casa"/>
+                        <h:inputText value="#{funcionarioMbean.funcionario.casa}" size="30"/>
+
+                        <h:outputLabel value="Rua"/>
+                        <h:inputText value="#{funcionarioMbean.funcionario.rua}" size="30"/>
+
+                        <h:outputLabel value="bairro"/>
+                        <h:inputText value="#{funcionarioMbean.funcionario.bairro}" size="30"/>
+                        
+                        <h:outputLabel value="Municipio"/>
+                        <h:selectOneMenu value="#{funcionarioMbean.funcionario.municipio}">
+                            <f:selectItem itemValue="lisboa" itemLabel="Lisboa"/>
+                            <f:selectItem itemValue="viana" itemLabel="Viana"/>
+                            <f:selectItem itemValue="porto" itemLabel="Porto"/>
+                            <f:selectItem itemValue="belas" itemLabel="Belas"/>
+                            <f:selectItem itemValue="luanda" itemLabel="Luanda"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                </h:panelGroup>
+
+            
+            <h:commandButton value="Guardar" action="#{funcionarioMbean.guardar}"/>
+        </h:form>
+        
+        <!--exemplo com valores estáticos && receptor de valores inseridos-->
+
+        <h:dataTable value="#{funcionarioMbean.funcionarios}" var="f">
+            <f:facet name="header"><h2>Lista dos Funcionarios</h2></f:facet>
+            <h:column>
+                <f:facet name="header">Nome:</f:facet>
+                    #{f.nome}
+            </h:column>
+            <h:column>
+                <f:facet name="header">SobreNome:</f:facet>
+                    #{f.sobrenome}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Deprtamento:</f:facet>
+                    #{f.departamento}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Salario:</f:facet>
+                    #{f.salario}
+            </h:column>
+            <h:column>
+                <f:facet name="header">data de Nascimento</f:facet>
+                    #{f.dataNascimento}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Rua</f:facet>
+                    #{f.rua}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Casa</f:facet>
+                    #{f.casa}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Bairro</f:facet>
+                    #{f.bairro}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Municipio</f:facet>
+                    #{f.municipio}
+            </h:column>
+        </h:dataTable>
+    </h:body>
+
+</html>
+

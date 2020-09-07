@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registro de Departamento</title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <h:outputScript library="js" name="jquery-3.5.1.min.js"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2"> 
+                <h:outputLabel value="Sigla"/>
+                <h:inputText value="#{departamentoCDIBean.departamento.sigla}"/>
+                <h:outputLabel value="Nome"/>
+                <h:inputText value="#{departamentoCDIBean.departamento.nome}"/>       
+            </h:panelGrid>
+            <h:commandButton value="Guardar" action="#{departamentoCDIBean.save}"/>
+        </h:form>
+
+        <h:form style="width: 80%">
+            <h:dataTable value="#{departamentoCDIBean.departamentos}" var="dep" class="table table-striped">
+                <h:column>
+                    <f:facet name="header">Sigla</f:facet>
+                    #{dep.sigla}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                    #{dep.nome}
+                </h:column>
+            </h:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+

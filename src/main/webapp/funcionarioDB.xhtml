@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <h2> A Listar para Base de Dados </h2>
+
+        <h:form>
+            <h:panelGrid columns="3">  
+                <h:outputLabel value="Nome"/>
+                <h:inputText id="nome" value="#{funcionarioMbean.funcionario.nome}" required="true" requiredMessage="o campo nome é obrigatorio" size="60"/>
+                <h:message for="nome" style="color: #FF0000;" />
+
+                <h:outputLabel value="SobreNome"/>
+                <h:inputText id="sobrenome" value="#{funcionarioMbean.funcionario.sobrenome}" required="true" requiredMessage="o campo sobrenome é obrigatorio" size="60"/>
+                <h:message for="sobrenome" style="color: #FF0000;" />
+            </h:panelGrid> 
+            
+               <!-- continuar com o prof.....................
+            <h:outputLabel value="Departamento"/>
+            <h:selectOneMenu value="#{funcionarioMbean.funcionario.departamento}">
+                <f:selectItem itemValue="contabilidade" itemLabel="Contabilidade"/>
+                <f:selectItem itemValue="formacao" itemLabel="Formação"/>
+                <f:selectItem itemValue="higiene" itemLabel="Higiene"/>
+                <f:selectItem itemValue="vendas" itemLabel="Vendas"/>                    
+            </h:selectOneMenu>
+            
+         
+            
+            <h:panelGrid columns="3">         
+                <h:outputLabel value="Data de Nascimento"/>
+                <h:inputText id="data_nascimento" value="#{funcionarioMbean.funcionario.dataNascimento}" rendered="true">
+                    <f:convertDateTime dateStyle="medium" pattern="dd/MM/yyyy"/>
+                </h:inputText>
+                <h:message for="data_nascimento" />
+
+                <h:outputLabel value="salario"/>
+                <h:inputText id="salario" value="#{funcionarioMbean.funcionario.salario}" size="30">
+                    <f:convertNumber minFractionDigits="2"/>
+                </h:inputText>
+                <h:message for="salario" />
+            </h:panelGrid>
+
+            <h:outputLabel value="Endereco"/>
+            <h:panelGroup>
+                <h:panelGrid columns="4">
+                    <h:outputLabel value="Casa"/>
+                    <h:inputText value="#{funcionarioMbean.funcionario.casa}" size="30"/>
+
+                    <h:outputLabel value="Rua"/>
+                    <h:inputText value="#{funcionarioMbean.funcionario.rua}" size="30"/>
+
+                    <h:outputLabel value="bairro"/>
+                    <h:inputText value="#{funcionarioMbean.funcionario.bairro}" size="30"/>
+
+                    <h:outputLabel value="Municipio"/>
+                    <h:selectOneMenu value="#{funcionarioMbean.funcionario.municipio}">
+                        <f:selectItem itemValue="lisboa" itemLabel="Lisboa"/>
+                        <f:selectItem itemValue="viana" itemLabel="Viana"/>
+                        <f:selectItem itemValue="porto" itemLabel="Porto"/>
+                        <f:selectItem itemValue="belas" itemLabel="Belas"/>
+                        <f:selectItem itemValue="luanda" itemLabel="Luanda"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+            </h:panelGroup>
+-->
+
+<h:commandButton value="Guardar" action="#{funcionarioMbean.save()}"/>
+        </h:form>
+
+    </h:body>
+</html>
+
